@@ -1,0 +1,80 @@
+options {
+    STATIC = false;
+}
+
+PARSER_BEGIN (SimPL)
+    package com.liyaos;
+    class SimPL {
+	public static void main(String[] args)
+	throws ParseException, TokenMgrError {
+	    SimPL parser = new SimPL(System.in);
+	    parser.Start();
+	}
+    }
+PARSER_END (SimPL)
+
+SKIP: {" "}
+SKIP: {"\n" | "\r" | "\r\n"}
+// key words
+TOKEN: {
+    <LET: "let">
+    | <IN: "in">
+    | <END: "end">
+    | <IF: "if">
+    | <THEN: "then">
+    | <ELSE: "else">
+    | <WHILE: "while">
+    | <DO: "do">
+    | <FST: "fst">
+    | <SND: "snd">
+    | <HEAD: "head">
+    | <TAIL: "tail">
+}
+// program operators
+TOKEN: {
+    <CONS: "::">
+    | <OPAR: "(">
+    | <CPAR: ")">
+    | <COMMA: "," >
+    | <ASSIGN: ":=">
+    | <SEMICOLON: ";">
+}
+// data type
+TOKEN: {
+    <INT: (["0"-"9"])+>
+    | <BOOL: "true" | "false">
+}
+// bop
+TOKEN: {
+    <PLUS: "+">
+    | <MINUS: "-">
+    | <TIMES: "*">
+    | <DIVIDE: "/">
+    | <EQ: "=">
+    | <GREATERTHAN: ">">
+    | <LESSTHAN: "<">
+    | <AND: "and">
+    | <OR: "or">
+}
+// uop
+TOKEN: {
+    <UMINUS: "~">
+    | <NOT: "not">
+}
+// identifier
+TOKEN: {
+    <IDENTIFIER: ["a"-"z"](["a"-"z", "0"-"9"])+>
+}
+
+void Start():
+{}
+{
+    <LET>
+    <IDENTIFIER>
+    <EQ>
+    <INT>
+    <IN>
+    <INT>
+    <END>
+    <EOF>
+}
