@@ -63,7 +63,7 @@ TOKEN: {
 }
 // identifier
 TOKEN: {
-    <IDENTIFIER: ["a"-"z"](["a"-"z", "0"-"9"])+>
+    <IDENTIFIER: ["a"-"z"](["a"-"z", "0"-"9"])*>
 }
 
 void Start():
