@@ -223,4 +223,26 @@ void AtomExpression():
 {}
 {
     <INT> | <BOOL> | <IDENTIFIER>
+    // Can these `LOOKAHEAD` be eliminated?
+    | LOOKAHEAD(BracketExpression()) BracketExpression()
+    | LOOKAHEAD(PairExpression()) PairExpression()
+    | AppExpression()
+}
+
+void AppExpression():
+{}
+{
+    <OPAR> Expression() Expression() <CPAR>
+}
+
+void PairExpression():
+{}
+{
+    <OPAR> Expression() <COMMA> Expression() <CPAR>
+}
+
+void BracketExpression():
+{}
+{
+    <OPAR> Expression() <CPAR>
 }
