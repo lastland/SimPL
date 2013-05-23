@@ -1,0 +1,196 @@
+options {
+    STATIC = false;
+}
+
+PARSER_BEGIN (SimPL)
+    package com.liyaos.simpl.parser;
+    import java.io.FileInputStream;
+    import java.io.File;
+    import java.io.FileNotFoundException;
+    class SimPL {
+	public static void main(String[] args)
+	throws ParseException, TokenMgrError, FileNotFoundException {
+	    SimPL parser = new SimPL(new FileInputStream(new File("test_input.txt")));
+	    parser.Start();
+	    System.out.println("Success!");
+	}
+    }
+PARSER_END (SimPL)
+
+SKIP: {" "}
+SKIP: {"\n" | "\r" | "\r\n"}
+// key words
+TOKEN: {
+    <LET: "let">
+    | <IN: "in">
+    | <END: "end">
+    | <IF: "if">
+    | <THEN: "then">
+    | <ELSE: "else">
+    | <WHILE: "while">
+    | <DO: "do">
+    | <FST: "fst">
+    | <SND: "snd">
+    | <HEAD: "head">
+    | <TAIL: "tail">
+    | <FUN: "fun">
+    | <NIL: "nil">
+}
+// program operators
+TOKEN: {
+    <CONS: "::">
+    | <OPAR: "(">
+    | <CPAR: ")">
+    | <COMMA: "," >
+    | <ASSIGN: ":=">
+    | <SEMICOLON: ";">
+    | <DEFUN: "->">
+}
+// data type
+TOKEN: {
+    <INT: (["0"-"9"])+>
+    | <BOOL: "true" | "false">
+}
+// bop
+TOKEN: {
+    <PLUS: "+">
+    | <MINUS: "-">
+    | <TIMES: "*">
+    | <DIVIDE: "/">
+    | <EQ: "=">
+    | <GREATERTHAN: ">">
+    | <LESSTHAN: "<">
+    | <AND: "and">
+    | <OR: "or">
+}
+// uop
+TOKEN: {
+    <UMINUS: "~">
+    | <NOT: "not">
+}
+// identifier
+TOKEN: {
+    <IDENTIFIER: ["a"-"z"](["a"-"z", "0"-"9"])*>
+}
+
+void Start():
+{}
+{
+    <LET>
+    <IDENTIFIER>
+    <EQ>
+    Expression()
+    <IN>
+    Expression()
+    <END>
+    <EOF>
+    // TBD
+}
+
+void Variable():
+{}
+{
+    <IDENTIFIER>
+}
+
+/*
+void Value():
+{}
+{
+    <INT>
+    | <BOOL>
+    | <NIL>
+    | AnonymousFunction()
+    | ConsExpression()
+    // TBD
+}
+*/
+
+void Expression():
+{}
+{
+    Sequence()
+}
+
+void Sequence():
+{}
+{
+    OneExpression()
+    (<SEMICOLON>OneExpression())*
+}
+
+void OneExpression() #void :
+{}
+{
+    AnonymousFunction()
+    | LOOKAHEAD(2) AssignmentExpression()
+    | ConsExpression()
+}
+
+void AnonymousFunction():
+{}
+{
+    <FUN><IDENTIFIER><DEFUN>
+    OneExpression()
+}
+
+void AssignmentExpression():
+{}
+{
+    <IDENTIFIER><ASSIGN>OneExpression()
+}
+
+void ConsExpression():
+{}
+{
+    (AndOrExpression() (<CONS> AndOrExpression())?) #Cons(>1)
+}
+
+void AndOrExpression():
+{}
+{  
+    (CompareExpression() 
+    (<AND> #And CompareExpression()
+    | <OR> #Or CompareExpression())*) #AndOr(>1)
+}
+
+void CompareExpression():
+{}
+{
+    (AdditiveExpression()
+    ((<EQ> | <GREATERTHAN> | <LESSTHAN>) AdditiveExpression())*) #Compare(>1)
+}
+
+void AdditiveExpression():
+{}
+{
+    (Term() ((<PLUS> #Plus
+    | <MINUS> #Minus) Term())*) #PlusMinus(>1)
+}
+
+void Term():
+{}
+{
+    (Factor() ((<TIMES> #Times
+    | <DIVIDE> #Divide) Factor())*) #TimesDivide(>1)
+}
+
+void Factor():
+{}
+{
+    NotExpression()
+    | AtomExpression()
+}
+
+void NotExpression():
+{}
+{
+    (<UMINUS> 
+    | <NOT>) AtomExpression()
+}
+
+void AtomExpression():
+{}
+{
+    <INT> | <BOOL> | <IDENTIFIER>
+}
