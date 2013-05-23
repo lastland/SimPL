@@ -76,15 +76,8 @@ TOKEN: {
 void Start():
 {}
 {
-    <LET>
-    <IDENTIFIER>
-    <EQ>
     Expression()
-    <IN>
-    Expression()
-    <END>
     <EOF>
-    // TBD
 }
 
 void Variable():
@@ -109,7 +102,44 @@ void Value():
 void Expression():
 {}
 {
-    Sequence()
+    LetExpression()
+    | IfExpression()
+    | WhileExpression()
+    | Sequence()
+}
+
+void LetExpression():
+{}
+{
+    <LET>
+    Variable()
+    <EQ>
+    Expression()
+    <IN>
+    Expression()
+    <END>
+}
+
+void IfExpression():
+{}
+{
+    <IF>
+    Expression()
+    <THEN>
+    Expression()
+    <ELSE>
+    Expression()
+    <END>
+}
+
+void WhileExpression():
+{}
+{
+    <WHILE>
+    Expression()
+    <DO>
+    Expression()
+    <END>
 }
 
 void Sequence():
