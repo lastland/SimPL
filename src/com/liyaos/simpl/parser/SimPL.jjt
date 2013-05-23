@@ -223,10 +223,38 @@ void AtomExpression():
 {}
 {
     <INT> | <BOOL> | <IDENTIFIER>
+    | FstExpression()
+    | SndExpression()
+    | HeadExpression()
+    | TailExpression()
     // Can these `LOOKAHEAD` be eliminated?
     | LOOKAHEAD(BracketExpression()) BracketExpression()
     | LOOKAHEAD(PairExpression()) PairExpression()
     | AppExpression()
+}
+
+void FstExpression():
+{}
+{
+    <FST> Expression()
+}
+
+void SndExpression():
+{}
+{
+    <SND> Expression()
+}
+
+void HeadExpression():
+{}
+{
+    <HEAD> Expression()
+}
+
+void TailExpression():
+{}
+{
+    <TAIL> Expression()
 }
 
 void AppExpression():
