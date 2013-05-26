@@ -21,7 +21,7 @@ PARSER_BEGIN (SimPL)
     }
 PARSER_END (SimPL)
 
-SKIP: {" "}
+SKIP: {" " | "\t"}
 SKIP: {"\n" | "\r" | "\r\n"}
 // key words
 TOKEN: {
@@ -90,10 +90,7 @@ ASTStart Start() #Start :
 void Expression():
 {}
 {
-    LetExpression()
-    | IfExpression()
-    | WhileExpression()
-    | Sequence()
+    Sequence()
 }
 
 void LetExpression() #Let :
@@ -141,6 +138,9 @@ void OneExpression() :
 {}
 {
     AnonymousFunction()
+    | LetExpression()
+    | IfExpression()
+    | WhileExpression()
     | LOOKAHEAD(2) AssignmentExpression()
     | ConsExpression()
 }
