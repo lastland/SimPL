@@ -236,25 +236,25 @@ void AtomExpression():
 void FstExpression():
 {}
 {
-    <FST> Expression()
+    <FST> AtomExpression()
 }
 
 void SndExpression():
 {}
 {
-    <SND> Expression()
+    <SND> AtomExpression()
 }
 
 void HeadExpression():
 {}
 {
-    <HEAD> Expression()
+    <HEAD> AtomExpression()
 }
 
 void TailExpression():
 {}
 {
-    <TAIL> Expression()
+    <TAIL> AtomExpression()
 }
 
 void AppExpression():
