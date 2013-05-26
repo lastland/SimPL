@@ -1,5 +1,9 @@
 options {
     STATIC = false;
+    VISITOR = true;
+    MULTI = true;
+    NODE_DEFAULT_VOID = true;
+    KEEP_LINE_COLUMN = true;
 }
 
 PARSER_BEGIN (SimPL)
@@ -73,31 +77,15 @@ TOKEN: {
     <IDENTIFIER: ["a"-"z"](["a"-"z", "0"-"9"])*>
 }
 
-void Start():
+ASTStart Start() #Start :
 {}
 {
     Expression()
     <EOF>
+    {
+	return jjtThis;
+    }
 }
-
-void Variable():
-{}
-{
-    <IDENTIFIER>
-}
-
-/*
-void Value():
-{}
-{
-    <INT>
-    | <BOOL>
-    | <NIL>
-    | AnonymousFunction()
-    | ConsExpression()
-    // TBD
-}
-*/
 
 void Expression():
 {}
@@ -108,19 +96,19 @@ void Expression():
     | Sequence()
 }
 
-void LetExpression():
+void LetExpression() #Let :
 {}
 {
     <LET>
-    Variable()
+    Identifier()
     <EQ>
     Expression()
     <IN>
     Expression()
-    <END>
+    <END> 
 }
 
-void IfExpression():
+void IfExpression() #If :
 {}
 {
     <IF>
@@ -132,24 +120,24 @@ void IfExpression():
     <END>
 }
 
-void WhileExpression():
+void WhileExpression() #While :
 {}
 {
     <WHILE>
     Expression()
     <DO>
     Expression()
-    <END>
+    <END> 
 }
 
 void Sequence():
 {}
 {
     OneExpression()
-    (<SEMICOLON>OneExpression())*
+    (<SEMICOLON>OneExpression())* #Sequence(>1)
 }
 
-void OneExpression() #void :
+void OneExpression() :
 {}
 {
     AnonymousFunction()
@@ -157,17 +145,17 @@ void OneExpression() #void :
     | ConsExpression()
 }
 
-void AnonymousFunction():
+void AnonymousFunction() #AnonymousFunction:
 {}
 {
-    <FUN><IDENTIFIER><DEFUN>
+    <FUN> Identifier() <DEFUN>
     OneExpression()
 }
 
-void AssignmentExpression():
+void AssignmentExpression() #Assignment :
 {}
 {
-    <IDENTIFIER><ASSIGN>OneExpression()
+    Identifier() <ASSIGN>OneExpression()
 }
 
 void ConsExpression():
@@ -180,8 +168,8 @@ void AndOrExpression():
 {}
 {  
     (CompareExpression() 
-    (<AND> #And CompareExpression()
-    | <OR> #Or CompareExpression())*) #AndOr(>1)
+    (<AND> CompareExpression()
+    | <OR> CompareExpression())*) #AndOr(>1)
 }
 
 void CompareExpression():
@@ -194,35 +182,43 @@ void CompareExpression():
 void AdditiveExpression():
 {}
 {
-    (Term() ((<PLUS> #Plus
-    | <MINUS> #Minus) Term())*) #PlusMinus(>1)
+    (Term() ((<PLUS>
+    | <MINUS>) Term())*) #PlusMinus(>1)
 }
 
 void Term():
 {}
 {
-    (Factor() ((<TIMES> #Times
-    | <DIVIDE> #Divide) Factor())*) #TimesDivide(>1)
+    (Factor() ((<TIMES>
+    | <DIVIDE>) Factor())*) #TimesDivide(>1)
 }
 
 void Factor():
 {}
 {
-    NotExpression()
+    NegativeExpression()
+    | NotExpression()
     | AtomExpression()
 }
 
-void NotExpression():
+void NegativeExpression() #Negetive :
 {}
 {
-    (<UMINUS> 
-    | <NOT>) AtomExpression()
+    <UMINUS> AtomExpression()
+}
+
+void NotExpression() #Not :
+{}
+{
+    <NOT> AtomExpression()
 }
 
 void AtomExpression():
 {}
 {
-    <INT> | <BOOL> | <IDENTIFIER>
+    Integer()
+    | Bool()
+    | Identifier()
     | FstExpression()
     | SndExpression()
     | HeadExpression()
@@ -233,43 +229,76 @@ void AtomExpression():
     | AppExpression()
 }
 
-void FstExpression():
+void Bool() #Bool :
+{
+    Token t;
+}
+{
+    t = <BOOL>
+    {
+	jjtThis.setValue(t.image);
+    }
+}
+
+void Integer() #Int :
+{
+    Token t;
+}
+{
+    t = <INT>
+    {
+	jjtThis.setValue(t.image);
+    }
+}
+
+void Identifier() #Identifier :
+{
+    Token t;
+}
+{
+    t = <IDENTIFIER>
+    {
+	jjtThis.setValue(t.image);
+    }
+}
+
+void FstExpression() #Fst :
 {}
 {
     <FST> AtomExpression()
 }
 
-void SndExpression():
+void SndExpression() #Snd:
 {}
 {
     <SND> AtomExpression()
 }
 
-void HeadExpression():
+void HeadExpression() #Head:
 {}
 {
     <HEAD> AtomExpression()
 }
 
-void TailExpression():
+void TailExpression() #Tail:
 {}
 {
     <TAIL> AtomExpression()
 }
 
-void AppExpression():
+void AppExpression() #Application :
 {}
 {
     <OPAR> Expression() Expression() <CPAR>
 }
 
-void PairExpression():
+void PairExpression() #Pair :
 {}
 {
     <OPAR> Expression() <COMMA> Expression() <CPAR>
 }
 
-void BracketExpression():
+void BracketExpression() #Bracket :
 {}
 {
     <OPAR> Expression() <CPAR>
