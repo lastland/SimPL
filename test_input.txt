@@ -1,1 +1,13 @@
-let x = fun y -> ~ 3 + 2 in true end
+let
+    mod = fun x -> fun y -> x - x / y * y
+in
+    let
+	gcd = fun x -> fun y ->
+	    if ((mod x) y) = 0
+	    then y
+	    else ((gcd y), ((mod x) y))
+	    end
+    in
+	((gcd 34986) 3087)
+    end
+end

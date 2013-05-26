@@ -11,75 +11,75 @@ public interface SimPLConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int LET = 5;
+  int LET = 6;
   /** RegularExpression Id. */
-  int IN = 6;
+  int IN = 7;
   /** RegularExpression Id. */
-  int END = 7;
+  int END = 8;
   /** RegularExpression Id. */
-  int IF = 8;
+  int IF = 9;
   /** RegularExpression Id. */
-  int THEN = 9;
+  int THEN = 10;
   /** RegularExpression Id. */
-  int ELSE = 10;
+  int ELSE = 11;
   /** RegularExpression Id. */
-  int WHILE = 11;
+  int WHILE = 12;
   /** RegularExpression Id. */
-  int DO = 12;
+  int DO = 13;
   /** RegularExpression Id. */
-  int FST = 13;
+  int FST = 14;
   /** RegularExpression Id. */
-  int SND = 14;
+  int SND = 15;
   /** RegularExpression Id. */
-  int HEAD = 15;
+  int HEAD = 16;
   /** RegularExpression Id. */
-  int TAIL = 16;
+  int TAIL = 17;
   /** RegularExpression Id. */
-  int FUN = 17;
+  int FUN = 18;
   /** RegularExpression Id. */
-  int NIL = 18;
+  int NIL = 19;
   /** RegularExpression Id. */
-  int CONS = 19;
+  int CONS = 20;
   /** RegularExpression Id. */
-  int OPAR = 20;
+  int OPAR = 21;
   /** RegularExpression Id. */
-  int CPAR = 21;
+  int CPAR = 22;
   /** RegularExpression Id. */
-  int COMMA = 22;
+  int COMMA = 23;
   /** RegularExpression Id. */
-  int ASSIGN = 23;
+  int ASSIGN = 24;
   /** RegularExpression Id. */
-  int SEMICOLON = 24;
+  int SEMICOLON = 25;
   /** RegularExpression Id. */
-  int DEFUN = 25;
+  int DEFUN = 26;
   /** RegularExpression Id. */
-  int INT = 26;
+  int INT = 27;
   /** RegularExpression Id. */
-  int BOOL = 27;
+  int BOOL = 28;
   /** RegularExpression Id. */
-  int PLUS = 28;
+  int PLUS = 29;
   /** RegularExpression Id. */
-  int MINUS = 29;
+  int MINUS = 30;
   /** RegularExpression Id. */
-  int TIMES = 30;
+  int TIMES = 31;
   /** RegularExpression Id. */
-  int DIVIDE = 31;
+  int DIVIDE = 32;
   /** RegularExpression Id. */
-  int EQ = 32;
+  int EQ = 33;
   /** RegularExpression Id. */
-  int GREATERTHAN = 33;
+  int GREATERTHAN = 34;
   /** RegularExpression Id. */
-  int LESSTHAN = 34;
+  int LESSTHAN = 35;
   /** RegularExpression Id. */
-  int AND = 35;
+  int AND = 36;
   /** RegularExpression Id. */
-  int OR = 36;
+  int OR = 37;
   /** RegularExpression Id. */
-  int UMINUS = 37;
+  int UMINUS = 38;
   /** RegularExpression Id. */
-  int NOT = 38;
+  int NOT = 39;
   /** RegularExpression Id. */
-  int IDENTIFIER = 39;
+  int IDENTIFIER = 40;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -88,6 +88,7 @@ public interface SimPLConstants {
   String[] tokenImage = {
     "<EOF>",
     "\" \"",
+    "\"\\t\"",
     "\"\\n\"",
     "\"\\r\"",
     "\"\\r\\n\"",
