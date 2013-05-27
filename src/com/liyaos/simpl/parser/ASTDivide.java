@@ -8,14 +8,14 @@ class ASTDivide extends SimpleNode {
     super(id);
   }
 
-  public ASTDivide(SimPL p, int id) {
+  public ASTDivide(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=5f4aab3b03ce7d4b092e62b698423e2c (do not edit this line) */
+/* JavaCC - OriginalChecksum=736c1990fac8e4946133ed05bd879000 (do not edit this line) */

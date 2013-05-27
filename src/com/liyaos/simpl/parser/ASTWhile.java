@@ -8,14 +8,14 @@ class ASTWhile extends SimpleNode {
     super(id);
   }
 
-  public ASTWhile(SimPL p, int id) {
+  public ASTWhile(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=99532f9dbd09f27ec7bab98c09de7e4c (do not edit this line) */
+/* JavaCC - OriginalChecksum=361c3e84274be36c9ef90c1dbb8d1163 (do not edit this line) */

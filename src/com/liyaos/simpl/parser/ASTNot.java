@@ -8,14 +8,14 @@ class ASTNot extends SimpleNode {
     super(id);
   }
 
-  public ASTNot(SimPL p, int id) {
+  public ASTNot(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=8a66053c2d1e0dc7c771d9e830fa8aae (do not edit this line) */
+/* JavaCC - OriginalChecksum=ee316bb7f50ac0e7310c5a110988689b (do not edit this line) */

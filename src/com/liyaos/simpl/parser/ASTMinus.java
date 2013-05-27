@@ -8,14 +8,14 @@ class ASTMinus extends SimpleNode {
     super(id);
   }
 
-  public ASTMinus(SimPL p, int id) {
+  public ASTMinus(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=c949f72fd8144a8f511cc1ebcabdc206 (do not edit this line) */
+/* JavaCC - OriginalChecksum=1336e5177e5c328dacb0da6a2b260ec4 (do not edit this line) */

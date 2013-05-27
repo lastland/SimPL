@@ -8,14 +8,14 @@ class ASTTimes extends SimpleNode {
     super(id);
   }
 
-  public ASTTimes(SimPL p, int id) {
+  public ASTTimes(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=5d8b886cd918ce0c182493923544d6ac (do not edit this line) */
+/* JavaCC - OriginalChecksum=3f4f1a7f2430d2a80c954a1c646d9379 (do not edit this line) */

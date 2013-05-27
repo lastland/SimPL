@@ -8,14 +8,14 @@ class ASTCons extends SimpleNode {
     super(id);
   }
 
-  public ASTCons(SimPL p, int id) {
+  public ASTCons(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=d8db6f0494ab6de6f6878a9ad970f59a (do not edit this line) */
+/* JavaCC - OriginalChecksum=15698cb7f2c35b911049fd51b2c3e3b2 (do not edit this line) */

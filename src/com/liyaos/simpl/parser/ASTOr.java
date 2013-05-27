@@ -8,14 +8,14 @@ class ASTOr extends SimpleNode {
     super(id);
   }
 
-  public ASTOr(SimPL p, int id) {
+  public ASTOr(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=d644f645fbb02d49d570b8a8f1fae7f1 (do not edit this line) */
+/* JavaCC - OriginalChecksum=afb5bf9693540f8978cb02af95fad9b0 (do not edit this line) */

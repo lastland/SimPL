@@ -8,14 +8,14 @@ class ASTTail extends SimpleNode {
     super(id);
   }
 
-  public ASTTail(SimPL p, int id) {
+  public ASTTail(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=c60061cc643366c6559642b5a70ca03f (do not edit this line) */
+/* JavaCC - OriginalChecksum=7243774e0530892be6e793bbc70f65d3 (do not edit this line) */

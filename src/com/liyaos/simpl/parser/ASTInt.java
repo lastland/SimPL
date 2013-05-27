@@ -11,7 +11,7 @@ class ASTInt extends SimpleNode {
     super(id);
   }
 
-  public ASTInt(SimPL p, int id) {
+  public ASTInt(SimPLParser p, int id) {
     super(p, id);
   }
 
@@ -20,7 +20,7 @@ class ASTInt extends SimpleNode {
   }
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }

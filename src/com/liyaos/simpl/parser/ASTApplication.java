@@ -8,14 +8,14 @@ class ASTApplication extends SimpleNode {
     super(id);
   }
 
-  public ASTApplication(SimPL p, int id) {
+  public ASTApplication(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=4ba8e386811cc49c8e38c0a76b6743cd (do not edit this line) */
+/* JavaCC - OriginalChecksum=864f0e37fe38ddbd21bcbc01aba2232c (do not edit this line) */

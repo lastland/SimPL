@@ -8,14 +8,14 @@ class ASTPair extends SimpleNode {
     super(id);
   }
 
-  public ASTPair(SimPL p, int id) {
+  public ASTPair(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=0710f71ed195acdb6fa0c15e955351a2 (do not edit this line) */
+/* JavaCC - OriginalChecksum=c7ab4b7550fedc47b94da872fc03bdaf (do not edit this line) */

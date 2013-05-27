@@ -34,6 +34,6 @@ interface Node {
   public int jjtGetNumChildren();
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data);
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data);
 }
-/* JavaCC - OriginalChecksum=835ee8b53db3b4e799e9671e5e3a4962 (do not edit this line) */
+/* JavaCC - OriginalChecksum=98a0abae59e76a532dd29a7db4078560 (do not edit this line) */

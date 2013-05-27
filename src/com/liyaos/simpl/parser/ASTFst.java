@@ -8,14 +8,14 @@ class ASTFst extends SimpleNode {
     super(id);
   }
 
-  public ASTFst(SimPL p, int id) {
+  public ASTFst(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=e43b8e6dd98349bdc4aa1861c1c4bea7 (do not edit this line) */
+/* JavaCC - OriginalChecksum=221473dccb54e1b54aa675fb4af1bac4 (do not edit this line) */

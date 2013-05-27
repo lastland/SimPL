@@ -8,14 +8,14 @@ class ASTBracket extends SimpleNode {
     super(id);
   }
 
-  public ASTBracket(SimPL p, int id) {
+  public ASTBracket(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=97277185302354be1eaab2f6671cdd70 (do not edit this line) */
+/* JavaCC - OriginalChecksum=7784f7b7ececf69cf810778139b320dc (do not edit this line) */

@@ -8,14 +8,14 @@ class ASTLet extends SimpleNode {
     super(id);
   }
 
-  public ASTLet(SimPL p, int id) {
+  public ASTLet(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=9edcb3f7b4e86cf9d7098b96a9d05f8d (do not edit this line) */
+/* JavaCC - OriginalChecksum=a2da99d31b3988e0f1a29c5a9ca2a8de (do not edit this line) */

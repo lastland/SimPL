@@ -8,14 +8,14 @@ class ASTHead extends SimpleNode {
     super(id);
   }
 
-  public ASTHead(SimPL p, int id) {
+  public ASTHead(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=6dda4d7929de8a47ca9a6d7f74a6ba31 (do not edit this line) */
+/* JavaCC - OriginalChecksum=99a28d0a481d5185ae6ae51f81321bb6 (do not edit this line) */

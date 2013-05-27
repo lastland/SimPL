@@ -8,14 +8,14 @@ class ASTIf extends SimpleNode {
     super(id);
   }
 
-  public ASTIf(SimPL p, int id) {
+  public ASTIf(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=0f94534335be580c58ab0e7fd9581d2b (do not edit this line) */
+/* JavaCC - OriginalChecksum=8adc0059ca133181baf38e61334c72e3 (do not edit this line) */

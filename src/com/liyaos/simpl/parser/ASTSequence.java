@@ -8,14 +8,14 @@ class ASTSequence extends SimpleNode {
     super(id);
   }
 
-  public ASTSequence(SimPL p, int id) {
+  public ASTSequence(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=fabd804ab2a0126568de70a6370ca96d (do not edit this line) */
+/* JavaCC - OriginalChecksum=92b4b5e34795ff7068a9fdae3e6b2449 (do not edit this line) */

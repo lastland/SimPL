@@ -9,13 +9,13 @@ class SimpleNode implements Node {
   protected Node[] children;
   protected int id;
   protected Object value;
-  protected SimPL parser;
+  protected SimPLParser parser;
 
   public SimpleNode(int i) {
     id = i;
   }
 
-  public SimpleNode(SimPL p, int i) {
+  public SimpleNode(SimPLParser p, int i) {
     this(i);
     parser = p;
   }
@@ -52,13 +52,13 @@ class SimpleNode implements Node {
   public Object jjtGetValue() { return value; }
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data)
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data)
 {
     return visitor.visit(this, data);
   }
 
   /** Accept the visitor. **/
-  public Object childrenAccept(SimPLVisitor visitor, Object data)
+  public Object childrenAccept(SimPLParserVisitor visitor, Object data)
 {
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
@@ -74,7 +74,7 @@ class SimpleNode implements Node {
      toString(String), otherwise overriding toString() is probably all
      you need to do. */
 
-  public String toString() { return SimPLTreeConstants.jjtNodeName[id]; }
+  public String toString() { return SimPLParserTreeConstants.jjtNodeName[id]; }
   public String toString(String prefix) { return prefix + toString(); }
 
   /* Override this method if you want to customize how the node dumps
@@ -93,4 +93,4 @@ class SimpleNode implements Node {
   }
 }
 
-/* JavaCC - OriginalChecksum=5885a97f47fcba30ad1796bd00477343 (do not edit this line) */
+/* JavaCC - OriginalChecksum=990d6758bbf61315dabf3738c4f359a6 (do not edit this line) */

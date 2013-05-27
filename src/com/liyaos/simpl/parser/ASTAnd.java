@@ -8,14 +8,14 @@ class ASTAnd extends SimpleNode {
     super(id);
   }
 
-  public ASTAnd(SimPL p, int id) {
+  public ASTAnd(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=2fbf5ece86bb7113e9b62b3243a29395 (do not edit this line) */
+/* JavaCC - OriginalChecksum=a638173b6e6125d8aec98e455e7e486b (do not edit this line) */

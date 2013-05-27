@@ -11,7 +11,7 @@ class ASTIdentifier extends SimpleNode {
     super(id);
   }
 
-  public ASTIdentifier(SimPL p, int id) {
+  public ASTIdentifier(SimPLParser p, int id) {
     super(p, id);
   }
 
@@ -21,7 +21,7 @@ class ASTIdentifier extends SimpleNode {
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }

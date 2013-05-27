@@ -8,14 +8,14 @@ class ASTAssignment extends SimpleNode {
     super(id);
   }
 
-  public ASTAssignment(SimPL p, int id) {
+  public ASTAssignment(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=9b54b06354d2d25d1cae306c9ef39421 (do not edit this line) */
+/* JavaCC - OriginalChecksum=df6f63c2740f8621796cb9aa8a002bb6 (do not edit this line) */

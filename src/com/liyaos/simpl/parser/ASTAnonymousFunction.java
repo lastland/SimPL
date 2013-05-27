@@ -8,14 +8,14 @@ class ASTAnonymousFunction extends SimpleNode {
     super(id);
   }
 
-  public ASTAnonymousFunction(SimPL p, int id) {
+  public ASTAnonymousFunction(SimPLParser p, int id) {
     super(p, id);
   }
 
 
   /** Accept the visitor. **/
-  public Object jjtAccept(SimPLVisitor visitor, Object data) {
+  public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=b343c69623675eef84097eab1f5d5321 (do not edit this line) */
+/* JavaCC - OriginalChecksum=991a65142ba818421e1a8c4c2785be53 (do not edit this line) */
