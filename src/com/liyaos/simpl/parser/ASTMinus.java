@@ -3,7 +3,7 @@
 package com.liyaos.simpl.parser;
 
 public
-class ASTMinus extends SimpleNode {
+class ASTMinus extends SimPLNode {
   public ASTMinus(int id) {
     super(id);
   }
@@ -18,4 +18,4 @@ class ASTMinus extends SimpleNode {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=1336e5177e5c328dacb0da6a2b260ec4 (do not edit this line) */
+/* JavaCC - OriginalChecksum=3c55c5f5272a836999d99ab069bff533 (do not edit this line) */

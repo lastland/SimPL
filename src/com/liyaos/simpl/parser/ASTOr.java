@@ -3,7 +3,7 @@
 package com.liyaos.simpl.parser;
 
 public
-class ASTOr extends SimpleNode {
+class ASTOr extends SimPLNode {
   public ASTOr(int id) {
     super(id);
   }
@@ -18,4 +18,4 @@ class ASTOr extends SimpleNode {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=afb5bf9693540f8978cb02af95fad9b0 (do not edit this line) */
+/* JavaCC - OriginalChecksum=f6e0dfb46218af30b96531005dd4a6ee (do not edit this line) */

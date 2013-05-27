@@ -3,6 +3,7 @@ options {
     VISITOR = true;
     MULTI = true;
     NODE_DEFAULT_VOID = true;
+    NODE_CLASS = "SimPLNode";
     KEEP_LINE_COLUMN = true;
 }
 

@@ -3,7 +3,7 @@
 package com.liyaos.simpl.parser;
 
 public
-class ASTBracket extends SimpleNode {
+class ASTBracket extends SimPLNode {
   public ASTBracket(int id) {
     super(id);
   }
@@ -18,4 +18,4 @@ class ASTBracket extends SimpleNode {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=7784f7b7ececf69cf810778139b320dc (do not edit this line) */
+/* JavaCC - OriginalChecksum=eaf2a796b65d93f0d75f9efc039606fb (do not edit this line) */

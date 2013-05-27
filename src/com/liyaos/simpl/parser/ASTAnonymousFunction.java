@@ -3,7 +3,7 @@
 package com.liyaos.simpl.parser;
 
 public
-class ASTAnonymousFunction extends SimpleNode {
+class ASTAnonymousFunction extends SimPLNode {
   public ASTAnonymousFunction(int id) {
     super(id);
   }
@@ -18,4 +18,4 @@ class ASTAnonymousFunction extends SimpleNode {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=991a65142ba818421e1a8c4c2785be53 (do not edit this line) */
+/* JavaCC - OriginalChecksum=ae2fc1a61c3fa3876767efbb523f5b2b (do not edit this line) */

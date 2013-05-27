@@ -3,7 +3,7 @@
 package com.liyaos.simpl.parser;
 
 public
-class ASTDivide extends SimpleNode {
+class ASTDivide extends SimPLNode {
   public ASTDivide(int id) {
     super(id);
   }
@@ -18,4 +18,4 @@ class ASTDivide extends SimpleNode {
     return visitor.visit(this, data);
   }
 }
-/* JavaCC - OriginalChecksum=736c1990fac8e4946133ed05bd879000 (do not edit this line) */
+/* JavaCC - OriginalChecksum=9b3bd416ab27d196034997e546529fdc (do not edit this line) */
