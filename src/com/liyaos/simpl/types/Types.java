@@ -6,5 +6,6 @@ public enum Types {
     BOOL,
     FUNC,
     LIST,
-    PAIR
+    PAIR,
+    UNIT
 }

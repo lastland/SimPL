@@ -12,13 +12,7 @@ PARSER_BEGIN (SimPLParser)
     import java.io.FileInputStream;
     import java.io.File;
     import java.io.FileNotFoundException;
-    class SimPLParser {
-	public static void main(String[] args)
-	throws ParseException, TokenMgrError, FileNotFoundException {
-	    SimPLParser parser = new SimPLParser(new FileInputStream(new File("test_input.txt")));
-	    parser.Start();
-	    System.out.println("Success!");
-	}
+    public class SimPLParser {
     }
 PARSER_END (SimPLParser)
 
@@ -132,7 +126,7 @@ void Sequence():
 {}
 {
     (OneExpression()
-    (<SEMICOLON>OneExpression())*) #Sequence(>1)
+    (<SEMICOLON>OneExpression())?) #Sequence(>1)
 }
 
 void OneExpression() :
