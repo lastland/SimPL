@@ -3,7 +3,7 @@
 package com.liyaos.simpl.parser;
 
 public
-class ASTIdentifier extends SimpleNode {
+class ASTIdentifier extends SimPLNode {
 
   private String value;
 
@@ -19,6 +19,9 @@ class ASTIdentifier extends SimpleNode {
     value = img;
   }
 
+  public String getValue() {
+    return value;
+  }
 
   /** Accept the visitor. **/
   public Object jjtAccept(SimPLParserVisitor visitor, Object data) {

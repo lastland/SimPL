@@ -738,6 +738,7 @@ void AtomExpression():
 {
     Integer()
     | Bool()
+    | EmptyList()
     | Identifier()
     | FstExpression()
     | SndExpression()
@@ -797,6 +798,24 @@ void Integer()      :
     {
 	jjtn000.setValue(t.image);
     }/*@bgen(jjtree)*/
+    } finally {
+      if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
+/*@egen*/
+}
+
+void EmptyList()      :
+{/*@bgen(jjtree) Nil */
+  ASTNil jjtn000 = new ASTNil(JJTNIL);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+/*@egen*/}
+{/*@bgen(jjtree) Nil */
+    try {
+/*@egen*/
+    <NIL>/*@bgen(jjtree)*/
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);

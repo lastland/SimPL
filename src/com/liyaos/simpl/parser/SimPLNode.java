@@ -1,6 +1,6 @@
 package com.liyaos.simpl.parser;
 
-import com.liyaos.simpl.types.Types;
+import com.liyaos.simpl.types.SimPLObjectType;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,7 +10,7 @@ import com.liyaos.simpl.types.Types;
  */
 public class SimPLNode extends SimpleNode {
 
-    private Types type;
+    private SimPLObjectType type = null;
 
     public SimPLNode(int i) {
         super(i);
@@ -20,11 +20,11 @@ public class SimPLNode extends SimpleNode {
         super(p, i);
     }
 
-    public Types getType() {
+    public SimPLObjectType getType() {
         return type;
     }
 
-    public void setType(Types type) {
+    public void setType(SimPLObjectType type) {
         this.type = type;
     }
 }

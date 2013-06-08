@@ -25,14 +25,15 @@ public interface SimPLParserTreeConstants
   public int JJTNOT = 19;
   public int JJTBOOL = 20;
   public int JJTINT = 21;
-  public int JJTIDENTIFIER = 22;
-  public int JJTFST = 23;
-  public int JJTSND = 24;
-  public int JJTHEAD = 25;
-  public int JJTTAIL = 26;
-  public int JJTAPPLICATION = 27;
-  public int JJTPAIR = 28;
-  public int JJTBRACKET = 29;
+  public int JJTNIL = 22;
+  public int JJTIDENTIFIER = 23;
+  public int JJTFST = 24;
+  public int JJTSND = 25;
+  public int JJTHEAD = 26;
+  public int JJTTAIL = 27;
+  public int JJTAPPLICATION = 28;
+  public int JJTPAIR = 29;
+  public int JJTBRACKET = 30;
 
 
   public String[] jjtNodeName = {
@@ -58,6 +59,7 @@ public interface SimPLParserTreeConstants
     "Not",
     "Bool",
     "Int",
+    "Nil",
     "Identifier",
     "Fst",
     "Snd",
@@ -68,4 +70,4 @@ public interface SimPLParserTreeConstants
     "Bracket",
   };
 }
-/* JavaCC - OriginalChecksum=cdcbf806f1f98f338b21bd1d6c5cdad8 (do not edit this line) */
+/* JavaCC - OriginalChecksum=629beb9f1b5b8573e8b3114199e96e47 (do not edit this line) */

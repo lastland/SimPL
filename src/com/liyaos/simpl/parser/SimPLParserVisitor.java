@@ -25,6 +25,7 @@ public interface SimPLParserVisitor
   public Object visit(ASTNot node, Object data);
   public Object visit(ASTBool node, Object data);
   public Object visit(ASTInt node, Object data);
+  public Object visit(ASTNil node, Object data);
   public Object visit(ASTIdentifier node, Object data);
   public Object visit(ASTFst node, Object data);
   public Object visit(ASTSnd node, Object data);
@@ -34,4 +35,4 @@ public interface SimPLParserVisitor
   public Object visit(ASTPair node, Object data);
   public Object visit(ASTBracket node, Object data);
 }
-/* JavaCC - OriginalChecksum=4d77439800d3212c55a336b47179772b (do not edit this line) */
+/* JavaCC - OriginalChecksum=49bafcaaa3b97cb267eeaca761ec875c (do not edit this line) */

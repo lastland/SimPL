@@ -224,6 +224,7 @@ void AtomExpression():
 {
     Integer()
     | Bool()
+    | EmptyList()
     | Identifier()
     | FstExpression()
     | SndExpression()
@@ -255,6 +256,12 @@ void Integer() #Int :
     {
 	jjtThis.setValue(t.image);
     }
+}
+
+void EmptyList() #Nil :
+{}
+{
+    <NIL>
 }
 
 void Identifier() #Identifier :
