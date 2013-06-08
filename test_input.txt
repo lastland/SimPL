@@ -8,6 +8,6 @@ in
 	    else ((gcd y) ((mod x) y))
 	    end
     in
-	((gcd 34986) 3087)
+	((gcd true) 3087)
     end
 end

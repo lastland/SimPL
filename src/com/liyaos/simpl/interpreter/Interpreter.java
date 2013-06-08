@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 import com.liyaos.simpl.parser.ASTProgram;
 import com.liyaos.simpl.parser.ParseException;
 import com.liyaos.simpl.parser.SimPLParser;
-import com.liyaos.simpl.parser.SimPLNode;
+import com.liyaos.simpl.types.NameList;
+import com.liyaos.simpl.types.TypeCheckingVisitor;
+import com.liyaos.simpl.types.TypeErrorException;
 import com.liyaos.simpl.types.TypeInferenceVisitor;
 
 /**
@@ -29,9 +31,13 @@ public class Interpreter {
         try {
             node = parser.Start();
             TypeInferenceVisitor inferenceVisitor = new TypeInferenceVisitor();
-            inferenceVisitor.visit(node, null);
+            NameList nameList = (NameList) inferenceVisitor.visit(node, null);
+            TypeCheckingVisitor checkingVisitor = new TypeCheckingVisitor(nameList);
+            checkingVisitor.visit(node, null);
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (TypeErrorException e) {
+            System.out.println("Type Error!");
         }
 
         System.out.println("Success!");

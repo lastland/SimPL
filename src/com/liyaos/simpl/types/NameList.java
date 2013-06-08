@@ -21,5 +21,7 @@ public class NameList extends HashMap<String, SimPLObjectType> {
         return "@" + anonymousCounter++;
     }
 
-
+    public void resetCounter() {
+        anonymousCounter = 0;
+    }
 }
