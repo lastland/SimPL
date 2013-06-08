@@ -37,7 +37,7 @@ public class TypeInferenceVisitor implements SimPLParserVisitor {
     public Object visit(ASTProgram node, Object data) {
         SimPLObjectType t = getChildType(node, new AliasList(), 0);
         constraints.infer(nameList);
-        return t;
+        return nameList;
     }
 
     @Override
