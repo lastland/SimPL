@@ -45,6 +45,6 @@ public class SimPLList<Node> extends SimPLObject {
 
     @Override
     public String toString() {
-        return "(" + car + " " + cdr + ")";
+        return car + " :: (" + cdr + ")";
     }
 }
