@@ -44,10 +44,17 @@ public class TypeInferenceVisitor implements SimPLParserVisitor {
     public Object visit(ASTLet node, Object data) {
         SimPLObjectType t1 = new SimPLObjectType();
         ASTIdentifier id = (ASTIdentifier)node.jjtGetChild(0);
-        nameList.put(id.getValue(), t1);
-        SimPLObjectType t2 = getChildType(node, data, 1);
+        AliasList aliasList = (AliasList) data;
+        String name = id.getValue();
+        if (nameList.containsKey(id.getValue())) {
+            String postfix = nameList.getNewAnonymousName();
+            aliasList = aliasList.onion(name + postfix, name);
+            name = name + postfix;
+        }
+        nameList.put(name, t1);
+        SimPLObjectType t2 = getChildType(node, aliasList, 1);
         SimPLObjectType.infer(t2, t1);
-        return getChildType(node, data, 2);
+        return getChildType(node, aliasList, 2);
     }
 
     @Override

@@ -15,4 +15,10 @@ public class AliasList extends HashMap<String, String> {
         res.putAll(list);
         return res;
     }
+
+    public AliasList onion(String s1, String s2) {
+        AliasList res = (AliasList)this.clone();
+        res.put(s1, s2);
+        return res;
+    }
 }

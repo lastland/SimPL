@@ -13,6 +13,7 @@ import static com.liyaos.simpl.types.Types.*;
 public class TypeCheckingVisitor implements SimPLParserVisitor {
 
     private NameList nameList;
+    private NameList anotherList;
 
     private static SimPLObjectType intType = new SimPLObjectType(INT);
     private static SimPLObjectType boolType = new SimPLObjectType(BOOL);
@@ -20,6 +21,7 @@ public class TypeCheckingVisitor implements SimPLParserVisitor {
 
     public TypeCheckingVisitor(NameList nameList) {
         this.nameList = nameList;
+        this.anotherList = new NameList();
     }
 
     private SimPLObjectType getChildType(SimPLNode node, Object data, int number) {
@@ -41,8 +43,18 @@ public class TypeCheckingVisitor implements SimPLParserVisitor {
 
     @Override
     public Object visit(ASTLet node, Object data) {
-        getChildType(node, data, 1);
-        return getChildType(node, data, 2);
+        ASTIdentifier id = (ASTIdentifier)node.jjtGetChild(0);
+        AliasList aliasList = (AliasList) data;
+        String name = id.getValue();
+        if (anotherList.containsKey(id.getValue())) {
+            String postfix = anotherList.getNewAnonymousName();
+            aliasList = aliasList.onion(name + postfix, name);
+            name = name + postfix;
+        }
+        anotherList.put(name, null);
+
+        getChildType(node, aliasList, 1);
+        return getChildType(node, aliasList, 2);
     }
 
     @Override
@@ -85,7 +97,7 @@ public class TypeCheckingVisitor implements SimPLParserVisitor {
     public Object visit(ASTAnonymousFunction node, Object data) {
         AliasList aliasList = new AliasList();
         ASTIdentifier id = (ASTIdentifier)node.jjtGetChild(0);
-        String newName = nameList.getNewAnonymousName();
+        String newName = anotherList.getNewAnonymousName();
         aliasList.put(id.getValue(), newName);
         return new SimPLObjectType(FUNC, nameList.get(newName),
                 getChildType(node, ((AliasList)data).onion(aliasList), 1));
