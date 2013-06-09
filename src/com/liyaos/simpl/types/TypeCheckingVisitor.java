@@ -66,7 +66,7 @@ public class TypeCheckingVisitor implements SimPLParserVisitor {
             throw new TypeErrorException(t1, boolType);
         }
         SimPLObjectType t2 = getChildType(node, data, 1);
-        if (!t2.equal(t1)) {
+        if (!t2.equal(unitType)) {
             throw new TypeErrorException(t2, unitType);
         }
         return t2;
@@ -307,7 +307,7 @@ public class TypeCheckingVisitor implements SimPLParserVisitor {
         if (t.getType() != LIST) {
             throw new TypeErrorException(t.getType(), LIST);
         }
-        return t.getType();
+        return t;
     }
 
     @Override
@@ -333,5 +333,10 @@ public class TypeCheckingVisitor implements SimPLParserVisitor {
     @Override
     public Object visit(ASTBracket node, Object data) {
         return getChildType(node, data, 0);
+    }
+
+    @Override
+    public Object visit(ASTUnit node, Object data) {
+        return new SimPLObjectType(UNIT);
     }
 }

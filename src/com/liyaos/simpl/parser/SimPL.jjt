@@ -125,8 +125,8 @@ void WhileExpression() #While :
 void Sequence():
 {}
 {
-    (OneExpression()
-    (<SEMICOLON>OneExpression())?) #Sequence(>1)
+    OneExpression()
+    (<SEMICOLON>OneExpression() #Sequence(2))*
 }
 
 void OneExpression() :
@@ -225,6 +225,7 @@ void AtomExpression():
     | HeadExpression()
     | TailExpression()
     // Can these `LOOKAHEAD` be eliminated?
+    | LOOKAHEAD(UnitExpression()) UnitExpression()
     | LOOKAHEAD(BracketExpression()) BracketExpression()
     | LOOKAHEAD(PairExpression()) PairExpression()
     | AppExpression()
@@ -309,4 +310,10 @@ void BracketExpression() #Bracket :
 {}
 {
     <OPAR> Expression() <CPAR>
+}
+
+void UnitExpression() #Unit :
+{}
+{
+    <OPAR> <CPAR>
 }

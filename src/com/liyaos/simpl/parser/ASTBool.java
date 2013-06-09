@@ -19,6 +19,10 @@ class ASTBool extends SimpleNode {
     value = img.equals("true");
   }
 
+  public boolean getValue() {
+    return value;
+  }
+
 
   /** Accept the visitor. **/
   public Object jjtAccept(SimPLParserVisitor visitor, Object data) {

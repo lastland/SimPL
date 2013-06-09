@@ -34,10 +34,11 @@ public class Interpreter {
             NameList nameList = (NameList) inferenceVisitor.visit(node, null);
             TypeCheckingVisitor checkingVisitor = new TypeCheckingVisitor(nameList);
             checkingVisitor.visit(node, null);
+            InterpretVisitor interpretVisitor = new InterpretVisitor();
+            SimPLObject ob = (SimPLObject) interpretVisitor.visit(node, null);
+            System.out.println(ob);
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (TypeErrorException e) {
-            System.out.println("Type Error!");
         }
 
         System.out.println("Success!");

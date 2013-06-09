@@ -90,8 +90,7 @@ public class TypeInferenceVisitor implements SimPLParserVisitor {
 
     @Override
     public Object visit(ASTAssignment node, Object data) {
-        ASTIdentifier id = (ASTIdentifier)node.jjtGetChild(0);
-        SimPLObjectType t1 = nameList.get(id.getValue());
+        SimPLObjectType t1 = getChildType(node, data, 0);
         SimPLObjectType t2 = getChildType(node, data, 1);
         constraints.put(t1, t2);
         return unitType;
@@ -285,5 +284,10 @@ public class TypeInferenceVisitor implements SimPLParserVisitor {
     @Override
     public Object visit(ASTBracket node, Object data) {
         return getChildType(node, data, 0);
+    }
+
+    @Override
+    public Object visit(ASTUnit node, Object data) {
+        return new SimPLObjectType(UNIT);
     }
 }

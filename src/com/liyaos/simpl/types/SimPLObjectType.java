@@ -51,7 +51,7 @@ public class SimPLObjectType {
     }
 
     private boolean isTypeAtom() {
-        return (type == Types.BOOL || type == Types.INT);
+        return (type == Types.BOOL || type == Types.INT || type == Types.UNIT);
     }
 
     public Types getType() {
@@ -143,7 +143,7 @@ public class SimPLObjectType {
         if (isTypeAtom()) {
             return type == t.getType();
         } else {
-            if (type == t.getType())
+            if (type != t.getType())
                 return false;
             if (!eltType.equal(t.eltType))
                 return false;

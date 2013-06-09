@@ -237,36 +237,36 @@ void WhileExpression()        :
 
 void Sequence():
 {}
-{/*@bgen(jjtree) #Sequence(> 1) */
-    {
-      ASTSequence jjtn001 = new ASTSequence(JJTSEQUENCE);
-      boolean jjtc001 = true;
-      jjtree.openNodeScope(jjtn001);
-    }
-    try {
-/*@egen*/
-    (OneExpression()
-    (<SEMICOLON>OneExpression())?)/*@bgen(jjtree)*/
-    } catch (Throwable jjte001) {
-      if (jjtc001) {
-        jjtree.clearNodeScope(jjtn001);
-        jjtc001 = false;
-      } else {
-        jjtree.popNode();
-      }
-      if (jjte001 instanceof RuntimeException) {
-        throw (RuntimeException)jjte001;
-      }
-      if (jjte001 instanceof ParseException) {
-        throw (ParseException)jjte001;
-      }
-      throw (Error)jjte001;
-    } finally {
-      if (jjtc001) {
-        jjtree.closeNodeScope(jjtn001, jjtree.nodeArity() > 1);
-      }
-    }
-/*@egen*/              
+{
+    OneExpression()
+    (<SEMICOLON>/*@bgen(jjtree) #Sequence( 2) */
+                {
+                  ASTSequence jjtn001 = new ASTSequence(JJTSEQUENCE);
+                  boolean jjtc001 = true;
+                  jjtree.openNodeScope(jjtn001);
+                }
+                try {
+/*@egen*/OneExpression()/*@bgen(jjtree)*/
+                } catch (Throwable jjte001) {
+                  if (jjtc001) {
+                    jjtree.clearNodeScope(jjtn001);
+                    jjtc001 = false;
+                  } else {
+                    jjtree.popNode();
+                  }
+                  if (jjte001 instanceof RuntimeException) {
+                    throw (RuntimeException)jjte001;
+                  }
+                  if (jjte001 instanceof ParseException) {
+                    throw (ParseException)jjte001;
+                  }
+                  throw (Error)jjte001;
+                } finally {
+                  if (jjtc001) {
+                    jjtree.closeNodeScope(jjtn001,  2);
+                  }
+                }
+/*@egen*/             )*
 }
 
 void OneExpression() :
@@ -739,6 +739,7 @@ void AtomExpression():
     | HeadExpression()
     | TailExpression()
     // Can these `LOOKAHEAD` be eliminated?
+    | LOOKAHEAD(UnitExpression()) UnitExpression()
     | LOOKAHEAD(BracketExpression()) BracketExpression()
     | LOOKAHEAD(PairExpression()) PairExpression()
     | AppExpression()
@@ -1062,6 +1063,24 @@ void BracketExpression()          :
         throw (ParseException)jjte000;
       }
       throw (Error)jjte000;
+    } finally {
+      if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+      }
+    }
+/*@egen*/
+}
+
+void UnitExpression()       :
+{/*@bgen(jjtree) Unit */
+  ASTUnit jjtn000 = new ASTUnit(JJTUNIT);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+/*@egen*/}
+{/*@bgen(jjtree) Unit */
+    try {
+/*@egen*/
+    <OPAR> <CPAR>/*@bgen(jjtree)*/
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);

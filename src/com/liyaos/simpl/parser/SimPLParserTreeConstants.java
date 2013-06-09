@@ -34,6 +34,7 @@ public interface SimPLParserTreeConstants
   public int JJTAPPLICATION = 28;
   public int JJTPAIR = 29;
   public int JJTBRACKET = 30;
+  public int JJTUNIT = 31;
 
 
   public String[] jjtNodeName = {
@@ -68,6 +69,7 @@ public interface SimPLParserTreeConstants
     "Application",
     "Pair",
     "Bracket",
+    "Unit",
   };
 }
-/* JavaCC - OriginalChecksum=629beb9f1b5b8573e8b3114199e96e47 (do not edit this line) */
+/* JavaCC - OriginalChecksum=101aebf60cd118319099614b4e2b5f63 (do not edit this line) */

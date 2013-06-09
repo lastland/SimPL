@@ -1,0 +1,5 @@
+let
+    x = fun t -> fun t -> t
+in
+    ((x 3) 4)
+end

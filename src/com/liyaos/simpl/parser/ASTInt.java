@@ -19,6 +19,10 @@ class ASTInt extends SimpleNode {
     value = Integer.valueOf(img);
   }
 
+  public int getValue() {
+    return value;
+  }
+
   /** Accept the visitor. **/
   public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
