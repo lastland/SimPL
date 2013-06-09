@@ -143,12 +143,9 @@ public class TypeCheckingVisitor implements SimPLParserVisitor {
     @Override
     public Object visit(ASTEq node, Object data) {
         SimPLObjectType t1 = getChildType(node, data, 0);
-        if (!t1.equal(intType)) {
-            throw new TypeErrorException(t1, intType);
-        }
         SimPLObjectType t2 = getChildType(node, data, 1);
-        if (!t2.equal(intType)) {
-            throw new TypeErrorException(t2, intType);
+        if (!t2.equal(t1)) {
+            throw new TypeErrorException(t2, t1);
         }
         return boolType;
     }

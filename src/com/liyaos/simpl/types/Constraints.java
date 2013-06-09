@@ -9,8 +9,10 @@ import java.util.*;
  * Time: 下午3:06
  */
 public class Constraints extends HashSet<Map.Entry<SimPLObjectType, SimPLObjectType>> {
-    public void infer(NameList nameList) {
+
+    public void infer() {
         SimPLObjectType t1, t2;
+        int s = 0;
         while (!isEmpty()) {
             for (Iterator<Map.Entry<SimPLObjectType, SimPLObjectType>> it = iterator(); it.hasNext();) {
                 Map.Entry<SimPLObjectType, SimPLObjectType> e = it.next();
@@ -21,6 +23,10 @@ public class Constraints extends HashSet<Map.Entry<SimPLObjectType, SimPLObjectT
                     it.remove();
                 }
             }
+            if (s == size()) {
+                break;
+            }
+            s = size();
         }
     }
 

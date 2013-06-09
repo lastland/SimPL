@@ -17,4 +17,8 @@ public class TypeErrorException extends RuntimeException {
         super("Type error detected! " + expected.toString() +
                 " expected but " + type.toString() + " found!");
     }
+
+    public TypeErrorException() {
+        super("Type error detected! Types cannot be inferred!");
+    }
 }

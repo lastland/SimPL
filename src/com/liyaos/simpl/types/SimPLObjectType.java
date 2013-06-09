@@ -35,21 +35,6 @@ public class SimPLObjectType {
         this.eltType2 = eltType2;
     }
 
-    public static SimPLObjectType createSimPLObject(Types type, SimPLObjectType... eltType) {
-        switch (type) {
-            case BOOL:
-            case INT:
-                return new SimPLObjectType(type);
-            case LIST:
-                return new SimPLObjectType(type, eltType[0]);
-            case PAIR:
-            case FUNC:
-                return new SimPLObjectType(type, eltType[0], eltType[1]);
-            default:
-                throw new RuntimeException("Error!");
-        }
-    }
-
     private boolean isTypeAtom() {
         return (type == Types.BOOL || type == Types.INT || type == Types.UNIT);
     }
@@ -153,9 +138,19 @@ public class SimPLObjectType {
         }
     }
 
-    public boolean toBeInterferred() {
-        return (type == null || (!isTypeAtom() &&
-                (eltType == null ||
-                        (type != Types.LIST && eltType2 == null))));
+    public String toString() {
+        if (type == Types.INT) {
+            return "INT";
+        } else if (type == Types.BOOL) {
+            return "BOOL";
+        } else if (type == Types.UNIT) {
+            return "UNIT";
+        } else if (type == Types.LIST) {
+            return "LIST of " + eltType;
+        } else if (type == Types.PAIR) {
+            return "PAIR of (" + eltType + ", " + eltType2 + ")";
+        } else {
+            return "FUNC of " + eltType + " -> " + eltType2;
+        }
     }
 }
