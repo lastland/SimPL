@@ -74,6 +74,7 @@ public class SimPLInt extends SimPLObject {
 
     @Override
     public String toString() {
+        if (undef) return "undef";
         return ((Integer)value).toString();
     }
 }

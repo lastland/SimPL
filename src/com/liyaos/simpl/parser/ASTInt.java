@@ -17,7 +17,7 @@ class ASTInt extends SimpleNode {
   }
 
   public void setValue(String img) {
-    if (img != "undef") {
+    if (!img.equals("undef")) {
         value = Integer.valueOf(img);
         undef = false;
     } else {
