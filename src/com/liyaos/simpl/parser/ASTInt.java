@@ -6,6 +6,7 @@ public
 class ASTInt extends SimpleNode {
 
   private int value;
+  private boolean undef;
 
   public ASTInt(int id) {
     super(id);
@@ -16,16 +17,27 @@ class ASTInt extends SimpleNode {
   }
 
   public void setValue(String img) {
-    value = Integer.valueOf(img);
+    if (img != "undef") {
+        value = Integer.valueOf(img);
+        undef = false;
+    } else {
+        undef = true;
+    }
   }
 
   public int getValue() {
     return value;
   }
 
+  public boolean isUndef() {
+    return undef;
+  }
+
   /** Accept the visitor. **/
   public Object jjtAccept(SimPLParserVisitor visitor, Object data) {
     return visitor.visit(this, data);
   }
+
+
 }
 /* JavaCC - OriginalChecksum=172ef627958699184c9f1e215dd0fa5b (do not edit this line) */

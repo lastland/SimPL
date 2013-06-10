@@ -148,34 +148,34 @@ public class InterpretVisitor implements SimPLParserVisitor {
     public Object visit(ASTPlus node, Object data) {
         SimPLInt e1 = (SimPLInt) getChild(node, data, 0);
         SimPLInt e2 = (SimPLInt) getChild(node, data, 1);
-        return new SimPLInt(e1.getValue() + e2.getValue());
+        return e1.plus(e2);
     }
 
     @Override
     public Object visit(ASTMinus node, Object data) {
         SimPLInt e1 = (SimPLInt) getChild(node, data, 0);
         SimPLInt e2 = (SimPLInt) getChild(node, data, 1);
-        return new SimPLInt(e1.getValue() - e2.getValue());
+        return e1.minus(e2);
     }
 
     @Override
     public Object visit(ASTTimes node, Object data) {
         SimPLInt e1 = (SimPLInt) getChild(node, data, 0);
         SimPLInt e2 = (SimPLInt) getChild(node, data, 1);
-        return new SimPLInt(e1.getValue() * e2.getValue());
+        return e1.times(e2);
     }
 
     @Override
     public Object visit(ASTDivide node, Object data) {
         SimPLInt e1 = (SimPLInt) getChild(node, data, 0);
         SimPLInt e2 = (SimPLInt) getChild(node, data, 1);
-        return new SimPLInt(e1.getValue() / e2.getValue());
+        return e1.divide(e2);
     }
 
     @Override
     public Object visit(ASTNegative node, Object data) {
         SimPLInt e = (SimPLInt) getChild(node, data, 0);
-        return new SimPLInt(- e.getValue());
+        return (new SimPLInt(0)).minus(e);
     }
 
     @Override
@@ -191,6 +191,8 @@ public class InterpretVisitor implements SimPLParserVisitor {
 
     @Override
     public Object visit(ASTInt node, Object data) {
+        if (node.isUndef())
+            return new SimPLInt();
         return new SimPLInt(node.getValue());
     }
 

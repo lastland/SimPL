@@ -9,9 +9,15 @@ package com.liyaos.simpl.interpreter;
 public class SimPLInt extends SimPLObject {
 
     private int value;
+    private boolean undef;
 
     public SimPLInt(int value) {
         this.value = value;
+        undef = false;
+    }
+
+    public SimPLInt() {
+        this.undef = true;
     }
 
     public int getValue() {
@@ -20,6 +26,42 @@ public class SimPLInt extends SimPLObject {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+
+    public boolean isUndef() {
+        return undef;
+    }
+
+    public SimPLInt plus(SimPLInt x) {
+        if (undef || x.isUndef()) {
+            return new SimPLInt();
+        }
+        return new SimPLInt(value + x.value);
+    }
+
+    public SimPLInt minus(SimPLInt x) {
+        if (undef || x.isUndef()) {
+            return new SimPLInt();
+        }
+        return new SimPLInt(value - x.value);
+    }
+
+    public SimPLInt times(SimPLInt x) {
+        if (undef || x.isUndef()) {
+            return new SimPLInt();
+        }
+        return new SimPLInt(value * x.value);
+    }
+
+    public SimPLInt divide(SimPLInt x) {
+        if (undef || x.isUndef()) {
+            return new SimPLInt();
+        }
+        if (x.value == 0) {
+            return new SimPLInt();
+        }
+        return new SimPLInt(value * x.value);
     }
 
     @Override
